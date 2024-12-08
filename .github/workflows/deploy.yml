@@ -37,12 +37,11 @@ jobs:
         run: gh -R Matthew-McRaven/pepp run download ${{ inputs.workflowID }} -p wasm-artifacts
         env:
           GH_TOKEN: ${{ secrets.DEPLOY_PAT }}
-      - run: ls -lah
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: '.'
+          path: 'wasm-artifacts'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
