@@ -35,6 +35,8 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Download WASM artifacts
         run: gh -R Matthew-McRaven/pepp run download ${{ inputs.workflowID }} -p wasm-artifacts
+        env:
+          GH_TOKEN: ${{ secrets.DEPLOY_PAT }}
       - run: ls -lah
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
